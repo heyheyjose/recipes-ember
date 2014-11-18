@@ -11,8 +11,8 @@
   <script type="text/x-handlebars">
     <div class="container">
     <h1>Welcome to Recipe.js</h1>
-    {{link-to 'Home' 'index'}}
-    {{link-to 'New Recipe' 'new_recipe'}}
+    <div class="home-button">{{link-to 'Home' 'index'}}</div>
+    <div class="new-button">{{link-to 'Add Recipe' 'new_recipe'}}</div>
     {{outlet}}
     </div>
   </script>
@@ -26,8 +26,8 @@
   </script>
 
   <script type="text/x-handlebars" id="recipe">
-  	<div>
-  	<h4>{{link-to 'EDIT' 'edit_recipe' id}}</h4>
+  	<div class="recipe-template">
+  	<div class="edit-button">{{link-to 'Edit' 'edit_recipe' id}}</div>
       <h2>{{title}}</h2>
       <img {{bind-attr src=imgUrl}} class="recipe-img" >
       <p>Description: {{description}}</p>
@@ -42,7 +42,7 @@
     <p>Title: {{input value=title}}</p>
     <p>Description: {{input value=description}}</p>
     <p>Category: {{input value=category}}</p>
-    <p>Picture: {{input value=imgUrl}}</p>
+    <p>Picture URL: {{input value=imgUrl}}</p>
     <p>Ingredients: {{input value=ingredients}}</p>
     <p>Steps: {{input value=steps}}</p>
   <button>Save Changes</button>
@@ -55,7 +55,7 @@
     <p>Title: {{input value=title}}</p>
     <p>Description: {{input value=description}}</p>
     <p>Category: {{input value=category}}</p>
-    <p>Picture: {{input value=imgUrl}}</p>
+    <p>Picture URL: {{input value=imgUrl}}</p>
     <p>Ingredients: {{input value=ingredients}}</p>
     <p>Steps: {{input value=steps}}</p>
   <button>Create Recipe</button>

@@ -8,13 +8,12 @@ body {
 }
 
 a {
-	/*color: #FFFFFF;*/
+	color: #000000;
+	text-decoration: none;
 }
 
 .container {
-	background-color: #96281B;
-	/*color: #FFFFFF;*/
-	/*border: 4px solid #000000;*/
+	background-color: #B67721;
 	border-radius: 6px;
 	padding: 20px;
 }
@@ -24,6 +23,35 @@ a {
 	width: 250px;
 }
 
+.recipe-template {
+	margin-top: 10px;
+}
+
 .edit-form {}
 
 .new-form {}
+
+.edit-button {
+	display: inline-block;
+	background-color: #f1c40f;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.home-button {
+	display: inline-block;
+	background-color: #27ae60;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.new-button {
+	display: inline-block;
+	background-color: #2980b9;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+	margin-left: 15px;
+}
