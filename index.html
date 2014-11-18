@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Recipes.js</title>
+  <title>Recipe.js</title>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -10,8 +10,9 @@
 <body>
   <script type="text/x-handlebars">
     <div class="container">
-    <h1>Welcome to Recipes.js</h1>
-
+    <h1>Welcome to Recipe.js</h1>
+    {{link-to 'Home' 'index'}}
+    {{link-to 'New Recipe' 'new_recipe'}}
     {{outlet}}
     </div>
   </script>
@@ -28,18 +29,27 @@
   	<div>
   	<h3>{{link-to 'EDIT' 'edit_recipe' id}}</h3>
       <h3>{{title}}</h3>
-      {{view 'select' content=recipeImage}}
+      <img {{bind-attr src=imgUrl}} class="recipe-img" >
       <h3>{{description}}</h3>
-      <h3>{{imgUrl}}</h3>
       <h3>{{ingredients}}</h3>
       <h3>{{steps}}</h3>
     </div>
+  </script>
+
+  <script type="text/x-handlebars" id="edit_recipe">
+  <form class="edit-form" {{action 'editFormSubmit' on='submit'}}>
+  {{input value=title}}<br>
+  {{input value=description}}<br>
+  {{input value=imgUrl}}<br>
+  <button>Save Changes</button>
+  </form>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-v1.3.0.js"></script>
   <script src="js/libs/ember-1.8.1.js"></script>
   <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/localstorage.js"></script>
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>

@@ -18,3 +18,8 @@ a {
 	border-radius: 6px;
 	padding: 20px;
 }
+
+.recipe-img {
+	height: 250px;
+	width: 250px;
+}
