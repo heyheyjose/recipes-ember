@@ -2,14 +2,40 @@ App = Ember.Application.create({
 	LOG_TRANSITIONS: true
 });
 
+/*
 App.ApplicationSerializer = DS.LSSerializer.extend();
 App.ApplicationAdapter = DS.LSAdapter.extend({
 	namespace: 'recipes'
 });
+*/
+
+App.ApplicationAdapter = DS.FirebaseAdapter.extend({
+	firebase: new Firebase('https://resplendent-inferno-386.firebaseio.com/')
+});
+
+App.CATEGORIES = [
+{
+	id: '1',
+	name: 'Meat'
+},
+{
+	id: '1',
+	name: 'Fancy'
+},
+{
+	id: '1',
+	name: 'Dessert'
+},
+{
+	id: '1',
+	name: 'Breakfast'
+}
+];
 
 App.Recipe = DS.Model.extend({
 	title: DS.attr('string'),
 	description: DS.attr('string'),
+	category: DS.attr('string'),
 	imgUrl: DS.attr('string'),
 	ingredients: DS.attr('string'),
 	steps: DS.attr('string')
@@ -22,7 +48,7 @@ App.Router.map(function () {
 });
 
 
-// LocalStorage isn't working. SORRY JUSTIN.
+/* LocalStorage isn't working. SORRY JUSTIN.
 setTimeout(function() {
 [
 {
@@ -53,6 +79,7 @@ setTimeout(function() {
 	App.__container__.lookup('store:main').createRecord('recipe', recipe);
 });
 }, 1000);
+*/
 
 App.IndexRoute = Ember.Route.extend({
 	model: function () {
@@ -85,16 +112,6 @@ App.EditRecipeRoute = Ember.Route.extend({
 			model.setProperties(attributes);
 			model.save();
 			this.transitionTo('recipe', model);
-			return false;
-		}
-	}
-});
-
-App.EditRecipeController = Ember.ObjectController.extend({
-	actions: {
-		editFormSubmit: function () {
-			var attributes = this.getProperties('title', 'description', 'imgUrl');
-			this.send('updateRecipe', this.model, attributes);
 			return false;
 		}
 	}
