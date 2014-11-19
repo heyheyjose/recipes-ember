@@ -11,8 +11,8 @@
   <script type="text/x-handlebars">
     <div class="container">
     <h1>Welcome to Recipe.js</h1>
-    <div class="home-button">{{link-to 'Home' 'index'}}</div>
-    <div class="new-button">{{link-to 'Add Recipe' 'new_recipe'}}</div>
+    <div class="btn-home">{{link-to 'Home' 'index'}}</div>
+    <div class="btn-new">{{link-to 'Add Recipe' 'new_recipe'}}</div>
     {{outlet}}
     </div>
   </script>
@@ -27,38 +27,39 @@
 
   <script type="text/x-handlebars" id="recipe">
   	<div class="recipe-template">
-  	<div class="edit-button">{{link-to 'Edit' 'edit_recipe' id}}</div>
       <h2>{{title}}</h2>
       <img {{bind-attr src=imgUrl}} class="recipe-img" >
       <p>Description: {{description}}</p>
       <p>Ingredients: {{ingredients}}</p>
       <p>Steps: {{steps}}</p>
+      <div class="btn-edit">{{link-to 'Edit' 'edit_recipe' id}}</div>
     </div>
   </script>
 
   <script type="text/x-handlebars" id="edit_recipe">
-  <form class="edit-form" {{action 'editFormSubmit' on='submit'}}>
+  <form {{action 'editFormSubmit' on='submit'}}>
     <h2>{{title}}</h2>
-    <p>Title: {{input value=title}}</p>
-    <p>Description: {{input value=description}}</p>
-    <p>Category: {{input value=category}}</p>
-    <p>Picture URL: {{input value=imgUrl}}</p>
-    <p>Ingredients: {{input value=ingredients}}</p>
-    <p>Steps: {{input value=steps}}</p>
-  <button>Save Changes</button>
+    <p>{{input value=title class="fields"}} Title</p>
+    <p>{{input value=description class="fields"}} Description</p>
+    <p>{{input value=category class="fields"}} Category</p>
+    <p>{{input value=imgUrl class="fields"}} Picture URL</p>
+    <p>{{input value=ingredients class="fields"}} Ingredients</p>
+    <p>{{input value=steps class="fields"}} Steps</p>
+  <button class="btn-edit-save">Save Changes</button>
+  <button {{action 'destroy'}} class="btn-delete">Delete Recipe</button>
   </form>
   </script>
 
   <script type="text/x-handlebars" id="new_recipe">
-  <form class="new-form" {{action 'create' on='submit'}}>
+  <form {{action 'create' on='submit'}}>
     <h2>{{title}}</h2>
-    <p>Title: {{input value=title}}</p>
-    <p>Description: {{input value=description}}</p>
-    <p>Category: {{input value=category}}</p>
-    <p>Picture URL: {{input value=imgUrl}}</p>
-    <p>Ingredients: {{input value=ingredients}}</p>
-    <p>Steps: {{input value=steps}}</p>
-  <button>Create Recipe</button>
+    <p>{{input value=title class="fields" placeholder="Title"}}</p>
+    <p>{{input value=description class="fields" placeholder="Description"}}</p>
+    <p>{{input value=category class="fields" placeholder="Category"}}</p>
+    <p>{{input value=imgUrl class="fields" placeholder="Picture URL"}}</p>
+    <p>{{input value=ingredients class="fields" placeholder="Ingredients"}}</p>
+    <p>{{input value=steps class="fields" placeholder="Steps"}}</p>
+  <button class="btn-create">Create Recipe</button>
   </form>
   </script>
 
@@ -73,6 +74,7 @@
   <script src="js/models/recipe.js"></script>
   <script src="js/controllers/new_recipe_controller.js"></script>
   <script src="js/controllers/edit_recipe_controller.js"></script>
+  <script src="js/controllers/recipe_controller.js"></script>
   <script src="js/router.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>

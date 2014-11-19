@@ -13,7 +13,7 @@ a {
 }
 
 .container {
-	background-color: #B67721;
+	background-color: #4DAF7C;
 	border-radius: 6px;
 	padding: 20px;
 }
@@ -27,31 +27,58 @@ a {
 	margin-top: 10px;
 }
 
-.edit-form {}
-
-.new-form {}
-
-.edit-button {
+.btn-edit {
 	display: inline-block;
-	background-color: #f1c40f;
+	background-color: #F4D03F;
 	padding: 6px;
 	border-radius: 6px;
 	font-weight: bold;
 }
 
-.home-button {
-	display: inline-block;
-	background-color: #27ae60;
+.btn-edit-save {
+	border: 0;
+	background-color: #F5D76E;
 	padding: 6px;
 	border-radius: 6px;
 	font-weight: bold;
 }
 
-.new-button {
+.btn-home {
 	display: inline-block;
-	background-color: #2980b9;
+	background-color: #A2DED0;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.btn-new {
+	display: inline-block;
+	background-color: #4183D7;
 	padding: 6px;
 	border-radius: 6px;
 	font-weight: bold;
 	margin-left: 15px;
+}
+
+.btn-create {
+	border: 0;
+	background-color: #22A7F0;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+.btn-delete {
+	border: 0;
+	background-color: #C0392B;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+.fields {
+	border: 0;
+	border-radius: 4px;
+	padding: 4px;
 }
