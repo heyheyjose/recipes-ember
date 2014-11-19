@@ -25,21 +25,6 @@ App.CATEGORIES = [
 }
 ];
 
-App.Recipe = DS.Model.extend({
-	title: DS.attr('string'),
-	description: DS.attr('string'),
-	category: DS.attr('string'),
-	imgUrl: DS.attr('string'),
-	ingredients: DS.attr('string'),
-	steps: DS.attr('string')
-});
-
-App.Router.map(function () {
-	this.route('recipe', { path: 'recipe/:id' });
-	this.route('edit_recipe', { path: 'recipe/:id/edit' });
-	this.route('new_recipe', { path: '/recipes/new' });
-});
-
 
 
 App.IndexRoute = Ember.Route.extend({
