@@ -28,6 +28,8 @@
   <script type="text/x-handlebars" id="recipe">
   	<div class="recipe-template">
       <h2>{{title}}</h2>
+      <p>{{categoryName}}</p>
+      {{category}}
       <img {{bind-attr src=imgUrl}} class="recipe-img" >
       <p>Description: {{description}}</p>
       <p>Ingredients: {{ingredients}}</p>
@@ -55,13 +57,37 @@
     <h2>{{title}}</h2>
     <p>{{input value=title class="fields" placeholder="Title"}}</p>
     <p>{{input value=description class="fields" placeholder="Description"}}</p>
-    <p>{{input value=category class="fields" placeholder="Category"}}</p>
+    <p>{{view "select" value=category content=App.CATEGORIES optionValuePath="content.id" optionLabelPath="content.name" class="fields" placeholder="Category"}}</p>
     <p>{{input value=imgUrl class="fields" placeholder="Picture URL"}}</p>
     <p>{{input value=ingredients class="fields" placeholder="Ingredients"}}</p>
     <p>{{input value=steps class="fields" placeholder="Steps"}}</p>
   <button class="btn-create">Create Recipe</button>
   </form>
   </script>
+
+  <script type="text/x-handlebars" id="category">
+    {{link-to 'Clear Filter' 'category' (query-params category='all')}}
+    {{#each App.CATEGORIES}}
+      {{#link-to 'category' (query-params category=id)}} Sort By {{name}} {{/link-to}}
+    {{/each}}
+    {{#if filteredRecipes.length}}
+      <h2>{{filteredRecipes.length}} Recipe{{#if moreThanOneFound}}s{{/if}} Found</h2>
+    {{else}}
+      <h2>Sorry No Recipes Found</h2>
+    {{/if}}
+    <ul>
+      {{#each filteredRecipes}}
+      <li>
+        <article>
+          <header>
+            {{#link-to 'recipe' this tagName='h2'}} {{title}} {{/link-to}}
+          </header>
+        </article>
+      </li>
+      {{/each}}
+    </ul>
+  </script>
+
 
 
   <script src="js/libs/jquery-1.10.2.js"></script>
@@ -76,6 +102,12 @@
   <script src="js/controllers/edit_recipe_controller.js"></script>
   <script src="js/controllers/recipe_controller.js"></script>
   <script src="js/router.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/routes/index_route.js"></script>
+  <script src="js/routes/recipe_route.js"></script>
+  <script src="js/routes/edit_recipe_route.js"></script>
+  <script src="js/routes/category_route.js"></script>
+
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>
