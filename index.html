@@ -8,15 +8,50 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
   <script type="text/x-handlebars">
     <div class="container">
-    <h1>Welcome to Recipe.js</h1>
-    <div class="btn-home">{{link-to 'Home' 'index'}}</div>
-    <div class="btn-new">{{link-to 'Add Recipe' 'new_recipe'}}</div>
-    {{outlet}}
+      <h1>{{link-to "Welcome to Recipe.js" "index"}}</h1>
+      {{#if isLoggedIn}}
+        <div class="btn-new">{{link-to 'Add Recipe' 'new_recipe'}}</div>
+        <button {{action 'logout'}} class="btn-signout">Sign Out</button>
+      {{else}}
+        <div class="btn-signin">{{link-to 'Sign In' 'login'}}</div>
+      {{/if}}
+    
+      {{outlet}}
     </div>
   </script>
 
+  <script type="text/x-handlebars" id="components/recipe-form">
+    {{#with recipe}}
+      <form>
+        <p>{{input value=title class="fields" placeholder="Title"}}</p>
+        <p>{{input value=description class="fields" placeholder="Description"}}</p>
+        <p>{{view "select" value=category content=App.CATEGORIES optionValuePath="content.id" optionLabelPath="content.name" class="fields" placeholder="Category"}}</p>
+        <p>{{input value=imgUrl class="fields" placeholder="Picture URL"}}</p>
+        <p>{{input value=ingredients class="fields" placeholder="Ingredients"}}</p>
+        <p>{{input value=steps class="fields" placeholder="Steps"}}</p>
+      {{yield}}
+      </form>
+    <h2>{{title}}</h2>
+    {{/with}}
+    {{{markedDescription}}}
+  </script>
+
+  <script type="text/x-handlebars" id="new_recipe">
+    {{#recipe-form recipe=this}}
+      <button {{action 'create'}} class="btn-create">Create Recipe</button>
+    {{/recipe-form}}
+  </script>
+
+  <script type="text/x-handlebars" id="edit_recipe">
+    {{#recipe-form recipe=this}}
+      <button {{action 'editFormSubmit'}} class="btn-edit-save">Save Changes</button>
+      <button {{action 'destroy'}} class="btn-delete">Delete Recipe</button>
+    {{/recipe-form}}
+  </script>
+<!-- DONE UP TO THIS POINT!!!!!!!!!!!! -->
   <script type="text/x-handlebars" id="index">
     <div>
     {{#each item in model}}
@@ -38,32 +73,9 @@
     </div>
   </script>
 
-  <script type="text/x-handlebars" id="edit_recipe">
-  <form {{action 'editFormSubmit' on='submit'}}>
-    <h2>{{title}}</h2>
-    <p>{{input value=title class="fields"}} Title</p>
-    <p>{{input value=description class="fields"}} Description</p>
-    <p>{{input value=category class="fields"}} Category</p>
-    <p>{{input value=imgUrl class="fields"}} Picture URL</p>
-    <p>{{input value=ingredients class="fields"}} Ingredients</p>
-    <p>{{input value=steps class="fields"}} Steps</p>
-  <button class="btn-edit-save">Save Changes</button>
-  <button {{action 'destroy'}} class="btn-delete">Delete Recipe</button>
-  </form>
-  </script>
+  
 
-  <script type="text/x-handlebars" id="new_recipe">
-  <form {{action 'create' on='submit'}}>
-    <h2>{{title}}</h2>
-    <p>{{input value=title class="fields" placeholder="Title"}}</p>
-    <p>{{input value=description class="fields" placeholder="Description"}}</p>
-    <p>{{view "select" value=category content=App.CATEGORIES optionValuePath="content.id" optionLabelPath="content.name" class="fields" placeholder="Category"}}</p>
-    <p>{{input value=imgUrl class="fields" placeholder="Picture URL"}}</p>
-    <p>{{input value=ingredients class="fields" placeholder="Ingredients"}}</p>
-    <p>{{input value=steps class="fields" placeholder="Steps"}}</p>
-  <button class="btn-create">Create Recipe</button>
-  </form>
-  </script>
+  
 
   <script type="text/x-handlebars" id="category">
     {{link-to 'Clear Filter' 'category' (query-params category='all')}}
