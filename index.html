@@ -51,37 +51,99 @@
       <button {{action 'destroy'}} class="btn-delete">Delete Recipe</button>
     {{/recipe-form}}
   </script>
-<!-- DONE UP TO THIS POINT!!!!!!!!!!!! -->
-  <script type="text/x-handlebars" id="index">
-    <div>
-    {{#each item in model}}
-      <h2>{{link-to item.title 'recipe' item.id}}</h2>
-    {{/each}}
-    </div>
+
+  <script type="text/x-handlebars" id="components/recipe-detail">
+    {{#with recipe}}
+      <article>
+        <header>
+          <h2> {{title}} </h2>
+          <h4> {{categoryName}}</h4>
+        </header>
+        <section>
+          <img {{bind-attr src=imgUrl}} style='width:500px'/>
+          <p>{{{markedDescription}}}</p>
+          <h4 {{action 'toggleItems' on 'click'}}>
+            {{itemCount}} Ingredients <i {{bind-attr class=':glyphicon showItems:glyphicon-chevron-down:glyphicon-chevron-up'}}></i>
+          </h4>
+          {{#if showItems}}
+            <ul>
+              {{#each item in splitItems}}
+              <li>{{item}}</li>
+              {{/each}}
+            </ul>
+          {{/if}}
+          <h4 {{action 'toggleSteps' on 'click'}}>
+        {{stepCount}} Steps <i {{bind-attr class=':glyphicon showSteps:glyphicon-chevron-down:glyphicon-chevron-up'}}></i>
+          </h4>
+          {{#if showSteps}}
+            <ul>
+              {{#each step in splitSteps}}
+                <li>{{step}}</li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </section>
+        {{#if isLoggedIn}}
+          {{link-to "Edit" "edit_recipe" this classNames='btn btn-primary'}}
+          <button {{action 'destroy'}} class='btn btn-danger'>Destroy Recipe</button>
+        {{/if}}
+        <section>
+        <h2>Comments ({{comments.length}})</h2>
+          {{#each comments}}
+            <article style='border-bottom: 1px dashed black'>
+              <p>{{date}}</p>
+              {{{markedText}}} -- {{name}}
+            </article>
+          {{/each}}
+          {{outlet}}
+          <hr>
+          {{link-to "New Comment" "recipe.new_comment" this.id class='btn btn-primary'}}
+        </section>
+      </article>
+    {{/with}}
   </script>
 
   <script type="text/x-handlebars" id="recipe">
-  	<div class="recipe-template">
-      <h2>{{title}}</h2>
-      <p>{{categoryName}}</p>
-      {{category}}
-      <img {{bind-attr src=imgUrl}} class="recipe-img" >
-      <p>Description: {{description}}</p>
-      <p>Ingredients: {{ingredients}}</p>
-      <p>Steps: {{steps}}</p>
-      <div class="btn-edit">{{link-to 'Edit' 'edit_recipe' id}}</div>
-    </div>
+    {{recipe-detail recipe=this}}
   </script>
 
-  
+  <script type='text/x-handlebars' id='recipe/new_comment'>
+    <h4>New Comment</h4>
+    <div class='preview'>
+      {{{markedText}}} - {{name}}
+    </div>
+    <form>
+      <div class='form-group'>
+        <label for='name'>Name:</label>
+        {{input value=name id='name' class='form-control'}}
+      </div>
+      <div class='form-group'>
+        <label for='text'>Feedback:</label>
+        {{textarea value=text id='text' class='form-control' rows='5'}}
+      </div>
+      <button class='btn btn-primary' {{action 'save'}}>Add Comment</button>
+    </form>
+  </script>
 
-  
+  <script type='text/x-handlebars' id='login'>
+    <h2>Login</h2>
+    <section>
+    <h4>{{error}}</h4>
+    {{input type='email'    value=username placeholder='email'}}
+    {{input type='password' value=password placeholder='password'}}
+    <button {{action 'login'}}>Login</button>
+    </section>
+  </script>
 
   <script type="text/x-handlebars" id="category">
-    {{link-to 'Clear Filter' 'category' (query-params category='all')}}
-    {{#each App.CATEGORIES}}
-      {{#link-to 'category' (query-params category=id)}} Sort By {{name}} {{/link-to}}
-    {{/each}}
+    <nav>
+      <ul>
+        <li>{{link-to 'Show All' 'category' (query-params category='all')}}</li>
+        {{#each App.CATEGORIES}}
+          <li>{{#link-to 'category' (query-params category=id)}} Show Only {{name}} {{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </nav>
     {{#if filteredRecipes.length}}
       <h2>{{filteredRecipes.length}} Recipe{{#if moreThanOneFound}}s{{/if}} Found</h2>
     {{else}}
@@ -100,12 +162,34 @@
     </ul>
   </script>
 
+  <script type="text/x-handlebars" id="index">
+    <a {{action "sortToggle" "title"}}>Toggle Alphabetical Sort</a>
+    <a {{action "sortToggle" "rank"}}>Toggle Rank Sort</a>
+    <ul>
+      {{#each}}
+        <li>
+          <article>
+            <header>
+              <h2>
+              <i class='glyphicon glyphicon-thumbs-up' {{action "upvote" this }} ></i>
+              {{#link-to 'recipe' this}} {{rank}} {{title}} {{/link-to}}
+              <i class='glyphicon glyphicon-thumbs-down' {{action "downvote" this }} ></i>
+              </h2>
+            </header>
+          </article>
+        </li>
+      {{/each}}
+    </ul>
+  </script>
+
+
 
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-v1.3.0.js"></script>
   <script src="js/libs/ember-1.8.1.js"></script>
   <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/marked.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/emberfire/1.3.1/emberfire.min.js"></script>
   <script src="js/app.js"></script>

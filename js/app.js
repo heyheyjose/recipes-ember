@@ -26,3 +26,9 @@ App.CATEGORIES = [
 	name: 'Breakfast'
 }
 ];
+
+App.RecipeFormComponent = Ember.Component.extend({
+	markedDescription: function () {
+		return marked((this.get('recipe.description')) || '');
+	}.property('recipe.description')
+});

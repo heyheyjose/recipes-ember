@@ -27,6 +27,14 @@ a {
 	margin-top: 10px;
 }
 
+.btn-signin {
+	display: inline-block;
+	background-color: #A2DED0;
+	padding: 6px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
 .btn-edit {
 	display: inline-block;
 	background-color: #F4D03F;
