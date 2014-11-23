@@ -2,91 +2,95 @@
 	margin: 20px;
 }
 
+* {
+	list-style: none  !important;
+}
+
 body {
-	background-image: url(../images/bg-img.jpg);
-	font-family: 'Open Sans', sans-serif;
+	background-image: url(../images/bg-img.jpg) !important;
+	font-family: 'Open Sans', sans-serif !important;
 }
 
 a {
-	color: #000000;
-	text-decoration: none;
+	color: #000000 !important;
+	text-decoration: none !important;
 }
 
 .container {
-	background-color: rgba(248, 190, 69, 0.8);
-	border-radius: 6px;
-	padding: 20px;
+	background-color: rgba(248, 190, 69, 0.8) !important;
+	border-radius: 6px !important;
+	padding: 20px !important;
 }
 
 .recipe-img {
-	height: 250px;
-	width: 250px;
+	height: 250px !important;
+	width: 250px !important;
 }
 
 .recipe-template {
-	margin-top: 10px;
+	margin-top: 10px !important;
 }
 
 .bttn-signin {
-	display: inline-block;
-	background-color: #A2DED0;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
+	display: inline-block !important;
+	background-color: #A2DED0 !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
 }
 
 .bttn-edit {
-	display: inline-block;
-	background-color: #F4D03F;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
+	display: inline-block !important;
+	background-color: #F4D03F !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
 }
 
 .bttn-edit-save {
-	border: 0;
-	background-color: #F5D76E;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
+	border: 0 !important;
+	background-color: #F5D76E !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
 }
 
 .bttn-home {
-	display: inline-block;
-	background-color: #A2DED0;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
+	display: inline-block !important;
+	background-color: #A2DED0 !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
 }
 
 .bttn-new {
-	display: inline-block;
-	background-color: #4183D7;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
-	margin-left: 15px;
+	display: inline-block !important;
+	background-color: #4183D7 !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
+	margin-left: 15px !important;
 }
 
 .bttn-create {
-	border: 0;
-	background-color: #22A7F0;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
+	border: 0 !important;
+	background-color: #22A7F0 !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
 }
 
 .bttn-delete {
-	border: 0;
-	background-color: #C0392B;
-	padding: 6px;
-	border-radius: 6px;
-	font-weight: bold;
-	margin-left: 15px;
+	border: 0 !important;
+	background-color: #C0392B !important;
+	padding: 6px !important;
+	border-radius: 6px !important;
+	font-weight: bold !important;
+	margin-left: 15px !important;
 }
 
 .fields {
-	border: 0;
-	border-radius: 4px;
-	padding: 4px;
+	border: 0 !important;
+	border-radius: 4px !important;
+	padding: 4px !important;
 }

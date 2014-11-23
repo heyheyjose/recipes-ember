@@ -4,7 +4,11 @@
   <meta charset="utf-8">
   <title>Recipe.js</title>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
-  <link rel="stylesheet" type="text/css" href="css/3.3.1-bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/dist/fonts/glyphicons-halflings-regular.eot">
+  <link rel="stylesheet" type="text/css" href="css/dist/fonts/glyphicons-halflings-regular.svg">
+  <link rel="stylesheet" type="text/css" href="css/dist/fonts/glyphicons-halflings-regular.ttf">
+  <link rel="stylesheet" type="text/css" href="css/dist/fonts/glyphicons-halflings-regular.woff">
   <link rel="stylesheet" type="text/css" href="css/my-custom.css">
 </head>
 <body>
@@ -60,7 +64,7 @@
           <h4> {{categoryName}}</h4>
         </header>
         <section>
-          <img {{bind-attr src=imgUrl}} style='width:500px'/>
+          <img {{bind-attr src=imgUrl}} class="recipe-img">
           <p>{{{markedDescription}}}</p>
           <h4 {{action 'toggleItems' on 'click'}}>
             {{itemCount}} Ingredients <i {{bind-attr class=':glyphicon showItems:glyphicon-chevron-down:glyphicon-chevron-up'}}></i>
