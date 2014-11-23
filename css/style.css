@@ -13,7 +13,7 @@ a {
 }
 
 .container {
-	background-color: rgba(248, 190, 69, 0.7);
+	background-color: rgba(248, 190, 69, 0.8);
 	border-radius: 6px;
 	padding: 20px;
 }
@@ -27,7 +27,7 @@ a {
 	margin-top: 10px;
 }
 
-.btn-signin {
+.bttn-signin {
 	display: inline-block;
 	background-color: #A2DED0;
 	padding: 6px;
@@ -35,7 +35,7 @@ a {
 	font-weight: bold;
 }
 
-.btn-edit {
+.bttn-edit {
 	display: inline-block;
 	background-color: #F4D03F;
 	padding: 6px;
@@ -43,7 +43,7 @@ a {
 	font-weight: bold;
 }
 
-.btn-edit-save {
+.bttn-edit-save {
 	border: 0;
 	background-color: #F5D76E;
 	padding: 6px;
@@ -51,7 +51,7 @@ a {
 	font-weight: bold;
 }
 
-.btn-home {
+.bttn-home {
 	display: inline-block;
 	background-color: #A2DED0;
 	padding: 6px;
@@ -59,7 +59,7 @@ a {
 	font-weight: bold;
 }
 
-.btn-new {
+.bttn-new {
 	display: inline-block;
 	background-color: #4183D7;
 	padding: 6px;
@@ -68,7 +68,7 @@ a {
 	margin-left: 15px;
 }
 
-.btn-create {
+.bttn-create {
 	border: 0;
 	background-color: #22A7F0;
 	padding: 6px;
@@ -76,7 +76,7 @@ a {
 	font-weight: bold;
 }
 
-.btn-delete {
+.bttn-delete {
 	border: 0;
 	background-color: #C0392B;
 	padding: 6px;

@@ -10,13 +10,13 @@ App.RecipeController = Ember.ObjectController.extend({
 
     splitSteps: function () {
         if (this.get('steps')) {
-            return (this.get('steps' || '').split(';');
+            return (this.get('steps') || '').split(';');
         }
     }.property('steps'),
 
     splitItems: function () {
         if (this.get('items')) {
-            return (this.get('items' || '').split(';');
+            return (this.get('items') || '').split(';');
         }
     }.property('items'),
 

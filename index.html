@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Recipe.js</title>
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -13,10 +13,10 @@
     <div class="container">
       <h1>{{link-to "Welcome to Recipe.js" "index"}}</h1>
       {{#if isLoggedIn}}
-        <div class="btn-new">{{link-to 'Add Recipe' 'new_recipe'}}</div>
-        <button {{action 'logout'}} class="btn-signout">Sign Out</button>
+        <div class="bttn-new">{{link-to 'Add Recipe' 'new_recipe'}}</div>
+        <button {{action 'logout'}} class="bttn-signout">Sign Out</button>
       {{else}}
-        <div class="btn-signin">{{link-to 'Sign In' 'login'}}</div>
+        <div class="bttn-signin">{{link-to 'Sign In' 'login'}}</div>
       {{/if}}
     
       {{outlet}}
@@ -41,14 +41,14 @@
 
   <script type="text/x-handlebars" id="new_recipe">
     {{#recipe-form recipe=this}}
-      <button {{action 'create'}} class="btn-create">Create Recipe</button>
+      <button {{action 'create'}} class="bttn-create">Create Recipe</button>
     {{/recipe-form}}
   </script>
 
   <script type="text/x-handlebars" id="edit_recipe">
     {{#recipe-form recipe=this}}
-      <button {{action 'editFormSubmit'}} class="btn-edit-save">Save Changes</button>
-      <button {{action 'destroy'}} class="btn-delete">Delete Recipe</button>
+      <button {{action 'editFormSubmit'}} class="bttn-edit-save">Save Changes</button>
+      <button {{action 'destroy'}} class="bttn-delete">Delete Recipe</button>
     {{/recipe-form}}
   </script>
 
@@ -84,8 +84,7 @@
           {{/if}}
         </section>
         {{#if isLoggedIn}}
-          {{link-to "Edit" "edit_recipe" this classNames='btn btn-primary'}}
-          <button {{action 'destroy'}} class='btn btn-danger'>Destroy Recipe</button>
+          {{link-to "Edit" "edit_recipe" this classNames='bttn-edit'}}
         {{/if}}
         <section>
         <h2>Comments ({{comments.length}})</h2>
@@ -97,7 +96,7 @@
           {{/each}}
           {{outlet}}
           <hr>
-          {{link-to "New Comment" "recipe.new_comment" this.id class='btn btn-primary'}}
+          {{link-to "New Comment" "recipe.new_comment" this.id class='bttn-new'}}
         </section>
       </article>
     {{/with}}
@@ -121,7 +120,7 @@
         <label for='text'>Feedback:</label>
         {{textarea value=text id='text' class='form-control' rows='5'}}
       </div>
-      <button class='btn btn-primary' {{action 'save'}}>Add Comment</button>
+      <button class='bttn-new' {{action 'save'}}>Add Comment</button>
     </form>
   </script>
 
@@ -163,8 +162,8 @@
   </script>
 
   <script type="text/x-handlebars" id="index">
-    <a {{action "sortToggle" "title"}}>Toggle Alphabetical Sort</a>
-    <a {{action "sortToggle" "rank"}}>Toggle Rank Sort</a>
+    <a {{action "sortToggle" "title" class="bttn-new"}}>Sort Alphabetically</a>
+    <a {{action "sortToggle" "rank" class="bttn-new"}}>Sort by Rank</a>
     <ul>
       {{#each}}
         <li>
@@ -183,8 +182,6 @@
   </script>
 
 
-
-
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-v1.3.0.js"></script>
   <script src="js/libs/ember-1.8.1.js"></script>
@@ -196,15 +193,15 @@
   <script src="js/models/recipe.js"></script>
   <script src="js/models/comment.js"></script>
   <script src="js/controllers/new_comment_controller.js"></script>
-  <script src="js/controllers/new_recipe_controller.js"></script>
   <script src="js/controllers/edit_recipe_controller.js"></script>
+  <script src="js/controllers/new_recipe_controller.js"></script>
   <script src="js/controllers/recipe_controller.js"></script>
   <script src="js/router.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/routes/category_route.js"></script>
+  <script src="js/routes/edit_recipe_route.js"></script>
   <script src="js/routes/index_route.js"></script>
   <script src="js/routes/recipe_route.js"></script>
-  <script src="js/routes/edit_recipe_route.js"></script>
-  <script src="js/routes/category_route.js"></script>
 
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
