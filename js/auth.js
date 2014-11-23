@@ -1,3 +1,18 @@
+App.ApplicationController = Ember.Controller.extend({
+	isLoggedIn: false,
+    savedTransition: null,
+
+    login: function () {
+      this.setProperties({
+      	savedTransition: null, isLoggedIn: true
+      });
+    },
+
+    logout: function () {
+      this.set('isLoggedIn', false);
+    }
+});
+
 App.ApplicationRoute = Ember.Route.extend({
 	beforeModel: function (transition) {
 		var applicationController = this.controllerFor('application');

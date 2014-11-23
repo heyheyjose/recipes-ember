@@ -5,18 +5,3 @@ App.Router.map(function () {
 	this.route('category', { path: '/recipes' });
 	this.route('login', { path: '/login' });
 });
-
-App.ApplicationController = Ember.Controller.extend({
-	isLoggedIn: false,
-    savedTransition: null,
-
-    login: function () {
-      this.setProperties({
-      	savedTransition: null, isLoggedIn: true
-      });
-    },
-
-    logout: function () {
-      this.set('isLoggedIn', false);
-    }
-});
