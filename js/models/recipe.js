@@ -9,5 +9,6 @@ App.Recipe = DS.Model.extend({
 	category: DS.attr('string'),
 	imgUrl: DS.attr('string'),
 	ingredients: DS.attr('string'),
-	steps: DS.attr('string')
+	steps: DS.attr('string'),
+	rank: DS.attr('number')
 });

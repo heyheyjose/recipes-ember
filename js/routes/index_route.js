@@ -5,10 +5,26 @@ App.IndexRoute = App.ApplicationRoute.extend({
 });
 
 App.IndexController = Ember.ArrayController.extend({
-	sortProperties: ['title'],
+	sortProperties: ['rank', 'title'],
+	sortAscending: false,
 	actions: {
-		sortToggle: function () {
+		sortToggle: function (prop) {
+			if (prop == 'title') {
+				this.set('sortProperties', ['title', 'rank']);
+			} else {
+				this.set('sortProperties', ['rank', 'title']);
+			}
 			this.set('sortAscending', !this.get('sortAscending'));
+		},
+
+		upvote: function (recipe) {
+			recipe.incrementProperty('rank');
+			recipe.save();
+		},
+
+		downvote: function (recipe) {
+			recipe.decrementProperty('rank');
+			recipe.save();
 		}
 	}
 });
